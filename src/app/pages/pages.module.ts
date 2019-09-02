@@ -16,6 +16,8 @@ import { AgmCoreModule } from '@agm/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 //Temporal
 
@@ -31,7 +33,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         // HighchartsChartComponent,
         MapsComponent,
         IncrementadorComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromesasComponent,
+        RxjsComponent
     ],
     exports: [
         DashboardComponent,
