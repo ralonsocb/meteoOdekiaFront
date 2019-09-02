@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12">
+        <agm-map [latitude]="lat" [longitude]="lon">
+            <agm-marker *ngFor="let marcador of marcadores" [latitude]="marcador.lat" [longitude]="marcador.lon">
+                <agm-info-window>
+                    <h4 class="text-themecolor text-center"><a [routerLink]="['/graficas1']">{{ marcador.titulo }}</a></h4>
+                    <br>
+                    <button type="button" class="btn btn-warning">Editar</button>
+                    <button type="button" class="btn btn-danger">Borrar</button>
+
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
+</div>

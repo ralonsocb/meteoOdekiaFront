@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 //Rutas
 import { APP_ROUTES } from './app.routes';
@@ -8,9 +9,19 @@ import { APP_ROUTES } from './app.routes';
 import { PagesModule } from './pages/pages.module';
 
 
+//Temporal
+import { FormsModule} from '@angular/forms';
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+
+import { AgmCoreModule } from '@agm/core';
+import { PAGES_ROUTES } from './pages/pages.routes';
+import { ServiceModule } from './services/service.module';
+
+
 
 
 @NgModule({
@@ -20,11 +31,20 @@ import { RegisterComponent } from './login/register.component';
     RegisterComponent,
   ],
   imports: [
+
+    ServiceModule,
+    FormsModule,
+    BrowserAnimationsModule,
     BrowserModule,
     APP_ROUTES,
-    PagesModule
+    PAGES_ROUTES,
+    PagesModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAS6OA2KbEX2AwlJf2ACkPSmEtp3hSkZJ0'
+    }),
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
