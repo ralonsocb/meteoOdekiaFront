@@ -18,6 +18,7 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
 
 //Temporal
 
@@ -35,7 +36,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
         IncrementadorComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     exports: [
         DashboardComponent,

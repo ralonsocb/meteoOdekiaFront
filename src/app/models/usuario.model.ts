@@ -1,5 +1,6 @@
 
 export class Usuario {
+  [x: string]: string;
 
     constructor (
         public nombre: string,
