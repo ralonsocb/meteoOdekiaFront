@@ -5,6 +5,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { PaginacionPipe } from './pipes/paginacion.pipe';
 
 @NgModule({
     imports: [
@@ -15,13 +16,15 @@ import { CommonModule } from '@angular/common';
        BreadcrumbsComponent,
        HeaderComponent,
        NopagefoundComponent,
-       SidebarComponent
+       SidebarComponent,
+       PaginacionPipe
     ],
     exports: [
         BreadcrumbsComponent,
         HeaderComponent,
         NopagefoundComponent,
-        SidebarComponent
+        SidebarComponent,
+        PaginacionPipe
     ]
 })
 

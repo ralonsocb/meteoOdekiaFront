@@ -20,6 +20,14 @@ export class SidebarService {
       icono: 'mdi mdi-map',
       url: '/map'
     },
+    {
+      titulo: 'Administración',
+      icono: 'mdi mdi-folder-lock-open',
+      submenu: [
+        {titulo: 'Usuarios', url: '/usuarios'},
+        {titulo: 'Estaciones', url: '/estaciones'}
+      ]
+    },
   ];
 
   constructor() { }
