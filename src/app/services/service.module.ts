@@ -6,7 +6,10 @@ import { SidebarService } from './shared/sidebar.service';
 import { SharedService } from './shared/shared.service';
 import { UsuarioService } from './usuario/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EstacionService } from './estacion/estacion.service';
+
 import { LoginGuardGuard } from './guards/login-guard.guard';
+
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { LoginGuardGuard } from './guards/login-guard.guard';
     SidebarService,
     SharedService,
     UsuarioService,
-    LoginGuardGuard
+    EstacionService,
+    LoginGuardGuard,
+ 
   ]
 })
 export class ServiceModule { }

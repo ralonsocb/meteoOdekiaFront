@@ -1,6 +1,6 @@
 
 export class Usuario {
-  [x: string]: string;
+  [x: string]: any;
 
     constructor (
         public nombre: string,

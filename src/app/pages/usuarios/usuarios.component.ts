@@ -94,7 +94,7 @@ totalRegistros: number = 0;
 
  
     });
-  };
+  }
 
   actualizarUsuario ( usuario:Usuario) {
 

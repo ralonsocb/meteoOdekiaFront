@@ -20,6 +20,8 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { EstacionesComponent } from './estaciones/estaciones.component';
+import { EstacionComponent } from './estaciones/estacion.component';
 
 //Temporal
 
@@ -39,7 +41,9 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
         PromesasComponent,
         RxjsComponent,
         ProfileComponent,
-        UsuariosComponent
+        UsuariosComponent,
+        EstacionesComponent,
+        EstacionComponent
     ],
     exports: [
         DashboardComponent,
