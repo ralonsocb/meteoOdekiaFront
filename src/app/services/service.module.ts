@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EstacionService } from './estacion/estacion.service';
 
 import { LoginGuardGuard } from './guards/login-guard.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 
 
@@ -25,6 +26,7 @@ import { LoginGuardGuard } from './guards/login-guard.guard';
     UsuarioService,
     EstacionService,
     LoginGuardGuard,
+    AdminGuard
  
   ]
 })
