@@ -15,9 +15,13 @@ export class EstacionComponent implements OnInit {
 
   
   usuarios: Usuario[] = [];
+  usuario: Usuario;
+  usuariosEstacion: Usuario[] = [];
   estacion: Estacion = new Estacion('','');
 
-  constructor( public _estacionService: EstacionService, 
+  desde: number = 0;
+
+  constructor( public _estacionService: EstacionService,
                public _usuarioService: UsuarioService,
                public router: Router,
                public activatedRoute: ActivatedRoute  ) {
@@ -28,13 +32,19 @@ export class EstacionComponent implements OnInit {
                   if (id !== 'nuevo'){
                     this.getEstacion(id);
                   }
-                })
+                });
                 }
 
   ngOnInit() {
-
     this._usuarioService.getUsuarios().
-      subscribe( (usuarios: any) => this.usuarios = usuarios.usuarios );
+      subscribe( (usuarios: any) => {
+        this.usuarios = usuarios.usuarios;
+        for(let usuario of this.usuarios){
+          if(usuario.estaciones.includes(this.estacion._id)){
+            this.usuariosEstacion.push(usuario);
+          }
+        }
+      });
   }
 
   getEstacion ( id: string ){
@@ -50,6 +60,36 @@ export class EstacionComponent implements OnInit {
     }
     this._estacionService.crearEstacion( this.estacion)
           .subscribe( estacion => { console.log(estacion)});
+  }
+
+
+  cambiarDesde ( valor: number){
+
+    let desde = this.desde + valor;
+
+    if (desde >= 18){
+      return;
+    }
+    if ( desde < 0){
+      return;
+    }
+    this.desde += valor;
+    this._usuarioService.getUsuarios(desde).
+    subscribe( (usuarios: any) => this.usuarios = usuarios.usuarios );
+  }
+
+
+  addUsuario (usuario:Usuario){
+    usuario.estaciones.push(this.estacion);
+    this._usuarioService.actualizarUsuario(usuario).subscribe();
+  }
+
+  eliminarUsuario (usuario:Usuario){
+    let indexEstacion= usuario.estaciones.indexOf(this.estacion._id);
+    let indexUsuario = this.usuariosEstacion.indexOf(usuario);
+    usuario.estaciones.splice(indexEstacion, 1);
+    this.usuariosEstacion.splice(indexUsuario, 1);
+    this._usuarioService.actualizarUsuario(usuario).subscribe();
   }
 
 }

@@ -20,6 +20,8 @@ import { RegisterComponent } from './login/register.component';
 import { AgmCoreModule } from '@agm/core';
 import { PAGES_ROUTES } from './pages/pages.routes';
 import { ServiceModule } from './services/service.module';
+import { PagesComponent } from './pages/pages.component';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -30,17 +32,19 @@ import { ServiceModule } from './services/service.module';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    PagesComponent
   ],
   imports: [
 
+    SharedModule,
     ServiceModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     BrowserModule,
     APP_ROUTES,
-    PAGES_ROUTES,
-    PagesModule,
+   // PAGES_ROUTES,
+    //PagesModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAS6OA2KbEX2AwlJf2ACkPSmEtp3hSkZJ0'
     }),

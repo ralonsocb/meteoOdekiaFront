@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { ProgressComponent } from './progress/progress.component';
-import { PagesComponent } from './pages.component';
+//import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
 
@@ -22,6 +22,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { EstacionesComponent } from './estaciones/estaciones.component';
 import { EstacionComponent } from './estaciones/estacion.component';
+import { CommonModule } from '@angular/common';
 
 //Temporal
 
@@ -33,7 +34,7 @@ import { EstacionComponent } from './estaciones/estacion.component';
         DashboardComponent,
         Graficas1Component,
         ProgressComponent,
-        PagesComponent,
+        //PagesComponent,
         // HighchartsChartComponent,
         MapsComponent,
         IncrementadorComponent,
@@ -49,7 +50,7 @@ import { EstacionComponent } from './estaciones/estacion.component';
         DashboardComponent,
         Graficas1Component,
         ProgressComponent,
-        PagesComponent,
+        //PagesComponent,
         MapsComponent,
 
     ],
@@ -57,12 +58,12 @@ import { EstacionComponent } from './estaciones/estacion.component';
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyAS6OA2KbEX2AwlJf2ACkPSmEtp3hSkZJ0'
           }),
-          BrowserAnimationsModule,
+          //BrowserAnimationsModule,
         ChartsModule,
         SharedModule,
         PAGES_ROUTES,
         FormsModule,
-        
+        CommonModule
 
     ]
 })

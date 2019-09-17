@@ -29,7 +29,88 @@
         </div>
     </div>
 
-    <div class="col md-3">
-        AQUI IRÁ UN LISTADO CON LOS USUARIOS APUNTADOS A ESTA ESTACION
+    <div class="row">
+        <div class="col md-6">
+
+
+            <div class="card card-body">
+                <div class="text-right">
+                    <button type="button" class="btn waves-effect waves-light btn-rounded btn-themecolor" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                                        <i class="fa fa-plus"></i> 
+                                                        Añadir usuario
+                                                      </button>
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class=" table table-hover">
+                                            <thead>
+                                                <th>Nombre</th>
+                                                <th>Email</th>
+                                                <th>Rol</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let usuario of usuarios">
+                                                    <td>{{ usuario.nombre }}</td>
+                                                    <td>{{ usuario.email }}</td>
+                                                    <td>{{ usuario.role }} </td>
+                                                    <td>
+                                                        <button (click)="addUsuario(usuario)" class="btn btn-outline-success">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+                                                Anteriores
+                                            </button>
+
+                                        <button (click)="cambiarDesde(10)" class="btn btn-secondary">
+                                                Siguientes
+                                            </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="card-title"> Usuarios ( <small>{{ usuariosEstacion.length}}</small> )
+                    <div id="myTable_filter" class="dataTables_filter"><small>Buscar:<input #input (keyup)="buscarEstacion(input.value)" type="search" class="" placeholder="" aria-controls="myTable"></small></div>
+                </h3>
+
+                <table class=" table table-hover">
+                    <thead>
+                        <th>Nombre</th>
+
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of usuariosEstacion">
+                            <td>{{ usuario.nombre }}</td>
+                            <td>
+                                <button (click)="eliminarUsuario(usuario)" class="btn btn-danger">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="cambiarDesde(-10)" class="btn btn-secondary btn-sm">
+                Anteriores
+            </button>
+
+                <button (click)="cambiarDesde(10)" class="btn btn-secondary btn-sm">
+                Siguientes
+            </button>
+
+
+            </div>
+        </div>
+
     </div>
 </div>

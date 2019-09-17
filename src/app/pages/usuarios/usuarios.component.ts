@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 //import swal from 'sweetalert';
+import { Estacion } from '../../models/estacion.model';
 
 declare var swal: any;
 
@@ -15,6 +16,7 @@ export class UsuariosComponent implements OnInit {
 usuarios: Usuario[] = [];
 desde: number = 0;
 cargando: boolean = true;
+
 
 
 

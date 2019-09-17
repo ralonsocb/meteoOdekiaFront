@@ -14,7 +14,6 @@ export class UsuarioService {
 
   usuario: Usuario;
   token: string;
-  menu: any = [];
 
   constructor(
     public http: HttpClient,
@@ -32,36 +31,30 @@ export class UsuarioService {
     if ( localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse( localStorage.getItem('usuario') );
-      this.menu = JSON.parse( localStorage.getItem('menu') );
 
     } else {
       this.token = '';
       this.usuario = null;
-      this.menu = [];
     }
 
   }
 
-  guardarStorage( id: string, token: string, usuario: Usuario, menu:any ) {
+  guardarStorage( id: string, token: string, usuario: Usuario ) {
 
     localStorage.setItem('id', id );
     localStorage.setItem('token', token );
     localStorage.setItem('usuario', JSON.stringify(usuario) );
-    localStorage.setItem('menu', JSON.stringify(menu) );
 
     this.usuario = usuario;
     this.token = token;
-    this.menu = menu;
   }
 
   logout() {
     this.usuario = null;
     this.token = '';
-    this.menu = [];
 
     localStorage.removeItem('token');
     localStorage.removeItem('usuario');
-    localStorage.removeItem('menu');
 
     this.router.navigate(['/login']);
   }
@@ -78,7 +71,7 @@ export class UsuarioService {
     let url = URL_SERVICIOS + '/login';
     return this.http.post( url, usuario )
                 .pipe(map( (resp: any) => {
-                  this.guardarStorage( resp.id, resp.token, resp.usuario, resp.menu );
+                  this.guardarStorage( resp.id, resp.token, resp.usuario );
 
                   return true;
                 })
@@ -104,18 +97,24 @@ export class UsuarioService {
 
   actualizarUsuario (usuario: Usuario ) {
 
+    console.log("AQUI SE LLEGA");
+ 
+
+
     let url = URL_SERVICIOS + '/usuario/' + usuario._id;
     url += '?token='+ this.token;
 
+    console.log (url);
     return this.http.put(url, usuario)
         .pipe(map ( (resp:any) => {
 
           if (usuario._id === this.usuario._id){
-            this.guardarStorage( resp.usuario._id, this.token, resp.usuario, this.menu);
+
+            this.guardarStorage( resp.usuario._id, this.token, resp.usuario);
           }
 
+
           swal('Usuario actualizado', usuario.nombre, 'success');
-     
 
           return true;
         }));

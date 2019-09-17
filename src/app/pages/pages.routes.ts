@@ -18,11 +18,7 @@ import { AdminGuard } from '../services/guards/admin.guard';
 
 
 const pagesRoutes: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        canActivate: [ LoginGuardGuard ],
-        children: [
+   
             {path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' }},
             {path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' }},
             {path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' }},
@@ -30,7 +26,7 @@ const pagesRoutes: Routes = [
             {path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes' }},
             {path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }},
             {path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJs' }},
-            
+
             //Mantenimientos
             {path: 'perfil', component: ProfileComponent, data: {titulo: 'Perfil del usuario'}},
             {path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios'}, canActivate: [AdminGuard]},
@@ -39,7 +35,7 @@ const pagesRoutes: Routes = [
 
             
             {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-    ]},
+    
 ];
 
 

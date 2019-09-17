@@ -18,21 +18,40 @@
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">PERSONAL</li>
 
+                <li *ngIf="usuario.role=='ADMIN_ROLE'">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-folder-lock-open"></i><span class="hide-menu">Administracion <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a routerLinkActive="active" routerLink="/usuarios">Usuarios </a></li>
+                        <li><a routerLinkActive="active" routerLink="/estaciones">Estaciones</a></li>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Estaciones <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li *ngFor="let estacion of estaciones">
+                            <a routerLinkActive="active" routerLink="/graficas1">{{estacion.nombre}} </a>
+                        </li>
 
-                <li *ngFor="let menu of _sidebar.menu">
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map"></i><span class="hide-menu">Mapa <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+
+
+
+
+                    <!-- <li *ngFor="let menu of _sidebar.menu">
 
                     <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i [class]="menu.icono"></i><span class="hide-menu">{{ menu.titulo }}
-                            <!-- <li *ngIf="menu.titulo=='Mapa'"><a routerLinkActive="active" [routerLink]="[menu.url]" routerLinkActive="active"></a></li> -->
-                <!-- <span class="label label-rouded label-themecolor pull-right">{{menu.length}}</span> -->
-                </span>
+                             <li *ngIf="menu.titulo=='Mapa'"><a routerLinkActive="active" [routerLink]="[menu.url]" routerLinkActive="active"></a></li> -->
+                    <!-- <span class="label label-rouded label-themecolor pull-right">{{menu.length}}</span> -->
+                    <!-- </span>
                 </a>
                 <ul aria-expanded="false" class="collapse">
                     <li *ngFor="let submenu of menu.submenu"><a routerLinkActive="active" [routerLink]="[submenu.url]" routerLinkActive="active"> {{submenu.titulo}} </a></li>
                 </ul>
-                </li>
+                </li> -->
 
 
-                <!-- <li> <a [routerLink]="['/map']" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-map"></i>Mapa </a></li> -->
+                    <!-- <li> <a [routerLink]="['/map']" class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-map"></i>Mapa </a></li> -->
 
             </ul>
         </nav>
