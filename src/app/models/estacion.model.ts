@@ -4,7 +4,8 @@ export class Estacion {
   
       constructor (
           public nombre: string,
-          public usuario: string,
+          public latitud: number,
+          public longitud: number,
           public id?: string
       ) {
   

@@ -10,13 +10,12 @@
                             <input [(ngModel)]="estacion.nombre" name="nombre" type="text" class="form-control" required placeholder="Nombre de la estación">
                         </div>
                         <div class="form-group">
-                            <label>Usuario</label>
-                            <select [(ngModel)]="estacion.usuario" name="usuario" class="form-control" required>
-                                <option value="">Seleccione usuario</option>
-                                <option *ngFor="let usuario of usuarios" [value]="usuario._id">
-                                    {{usuario.nombre}}
-                                </option>
-                            </select>
+                            <label for="exampleInputEmail1">Latitud la estación</label>
+                            <input [(ngModel)]="estacion.latitud" name="latitud" type="text" class="form-control" required placeholder="Latitud de la estación">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Longitud la estación</label>
+                            <input [(ngModel)]="estacion.longitud" name="longitud" type="text" class="form-control" required placeholder="Longitud de la estación">
                         </div>
                         <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
                             <i class="fa fa-save"></i>
@@ -29,88 +28,166 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col md-6">
+
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Selección de mediciones </h3>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="float-left">
+
+                        <div class="demo-switch-title">Temperatura ambiental</div>
+                        <div class="switch">
+                            <label>
+                             <input type="checkbox" checked=""><span class="lever switch-col-red"></span>
+                            </label>
+                        </div>
 
 
-            <div class="card card-body">
-                <div class="text-right">
-                    <button type="button" class="btn waves-effect waves-light btn-rounded btn-themecolor" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        <div class="demo-switch-title">Indice UV</div>
+                        <div class="switch">
+                            <label>
+                               <input type="checkbox" checked=""><span class="lever switch-col-deep-purple"></span>
+                            </label>
+                        </div>
+
+
+                        <div class="demo-switch-title">Precipitaciones</div>
+                        <div class="switch">
+                            <label>
+                               <input type="checkbox" checked=""><span class="lever switch-col-light-blue"></span>
+                            </label>
+                        </div>
+
+
+                        <div class="demo-switch-title">Humedad Relativa</div>
+                        <div class="switch">
+                            <label>
+                              <input type="checkbox" checked=""><span class="lever switch-col-teal"></span>
+                            </label>
+                        </div>
+
+
+                        <div class="demo-switch-title">Velocidad del viento</div>
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox" checked=""><span class="lever switch-col-light-green"></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+
+                    <div class="float-right">
+                        <div class="demo-switch-title">Velocidad del viento</div>
+                        <div class="switch">
+                            <label>
+                                 <input type="checkbox" checked=""><span class="lever switch-col-lime"></span>
+                                </label>
+                        </div>
+                        <div class="demo-switch-title">Posicion del sol</div>
+                        <div class="switch">
+                            <label>
+                             <input type="checkbox" checked=""><span class="lever switch-col-yellow"></span>
+                            </label>
+                        </div>
+
+                        <div class="demo-switch-title">Brillo/Crepúsculo</div>
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox" checked=""><span class="lever switch-col-amber"></span>
+                            </label>
+                        </div>
+
+
+                        <div class="demo-switch-title">Radiación solar</div>
+                        <div class="switch">
+                            <label>
+                                <input type="checkbox" checked=""><span class="lever switch-col-orange"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12">
+        <div class="card card-body">
+            <div class="text-right">
+                <button type="button" class="btn waves-effect waves-light btn-rounded btn-themecolor" data-toggle="modal" data-target=".bd-example-modal-lg">
                                                         <i class="fa fa-plus"></i> 
                                                         Añadir usuario
                                                       </button>
-                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table class=" table table-hover">
-                                            <thead>
-                                                <th>Nombre</th>
-                                                <th>Email</th>
-                                                <th>Rol</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let usuario of usuarios">
-                                                    <td>{{ usuario.nombre }}</td>
-                                                    <td>{{ usuario.email }}</td>
-                                                    <td>{{ usuario.role }} </td>
-                                                    <td>
-                                                        <button (click)="addUsuario(usuario)" class="btn btn-outline-success">
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class=" table table-hover">
+                                        <thead>
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                            <th>Rol</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let usuario of usuarios">
+                                                <td>{{ usuario.nombre }}</td>
+                                                <td>{{ usuario.email }}</td>
+                                                <td>{{ usuario.role }} </td>
+                                                <td>
+                                                    <button (click)="addUsuario(usuario)" class="btn btn-outline-success">
                                                             <i class="fa fa-plus"></i>
                                                         </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                                        <button (click)="cambiarDesde(-10)" class="btn btn-secondary">
-                                                Anteriores
-                                            </button>
+                                    <button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+                                        Anteriores
+                                    </button>
 
-                                        <button (click)="cambiarDesde(10)" class="btn btn-secondary">
-                                                Siguientes
-                                            </button>
+                                    <button (click)="cambiarDesde(10)" class="btn btn-secondary">
+                                        Siguientes
+                                    </button>
 
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <h3 class="card-title"> Usuarios ( <small>{{ usuariosEstacion.length}}</small> )
-                    <div id="myTable_filter" class="dataTables_filter"><small>Buscar:<input #input (keyup)="buscarEstacion(input.value)" type="search" class="" placeholder="" aria-controls="myTable"></small></div>
-                </h3>
+            <h3 class="card-title"> Usuarios ( <small>{{ usuariosEstacion.length}}</small> )
+                <div id="myTable_filter" class="dataTables_filter"><small>Buscar:<input #input (keyup)="buscarEstacion(input.value)" type="search" class="" placeholder="" aria-controls="myTable"></small></div>
+            </h3>
 
-                <table class=" table table-hover">
-                    <thead>
-                        <th>Nombre</th>
-
-
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let usuario of usuariosEstacion">
-                            <td>{{ usuario.nombre }}</td>
-                            <td>
-                                <button (click)="eliminarUsuario(usuario)" class="btn btn-danger">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button (click)="cambiarDesde(-10)" class="btn btn-secondary btn-sm">
+            <table class=" table table-hover">
+                <thead>
+                    <th>Nombre</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of usuariosEstacion">
+                        <td>{{ usuario.nombre }}</td>
+                        <td>
+                            <button (click)="eliminarUsuario(usuario)" class="btn btn-danger">
+                                 <i class="fa fa-trash-o"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button (click)="cambiarDesde(-10)" class="btn btn-secondary btn-sm">
                 Anteriores
             </button>
 
-                <button (click)="cambiarDesde(10)" class="btn btn-secondary btn-sm">
+            <button (click)="cambiarDesde(10)" class="btn btn-secondary btn-sm">
                 Siguientes
             </button>
 
 
-            </div>
         </div>
-
     </div>
 </div>

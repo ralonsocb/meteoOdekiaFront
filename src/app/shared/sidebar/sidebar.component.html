@@ -8,7 +8,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="user-profile">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" /><span class="hide-menu">Usuario </span></a>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><span class="hide-menu">{{usuario.nombre}} </span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a routerLinkActive="active" routerLink="/perfil">Perfil</a></li>
                         <li><a routerLinkActive="active" routerLink="/account-settings">Account Setting</a></li>
@@ -19,13 +19,13 @@
                 <li class="nav-small-cap">PERSONAL</li>
 
                 <li *ngIf="usuario.role=='ADMIN_ROLE'">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-folder-lock-open"></i><span class="hide-menu">Administracion <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-folder-lock-open"></i><span class="hide-menu">Administracion</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a routerLinkActive="active" routerLink="/usuarios">Usuarios </a></li>
                         <li><a routerLinkActive="active" routerLink="/estaciones">Estaciones</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Estaciones <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Estaciones</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li *ngFor="let estacion of estaciones">
                             <a routerLinkActive="active" routerLink="/graficas1">{{estacion.nombre}} </a>
@@ -33,7 +33,9 @@
 
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-map"></i><span class="hide-menu">Mapa <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false" [routerLink]="['/map']" routerLinkActive="router-link-active"><i class="mdi mdi-map"></i><span class="hide-menu">
+                    Mapa</span>
+                    </a>
 
 
 

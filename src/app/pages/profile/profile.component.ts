@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { Estacion } from 'src/app/models/estacion.model';
+import { EstacionService } from '../../services/estacion/estacion.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,12 +12,18 @@ import { Estacion } from 'src/app/models/estacion.model';
 export class ProfileComponent implements OnInit {
 
   usuario: Usuario;
-  estaciones: Estacion[];
- // estacion: Estacion = new Estacion('EstacionAñadida', 'usuario');
+  estaciones: Estacion[] = [];
 
-  constructor( public _usuarioService: UsuarioService) {
+  constructor( public _usuarioService: UsuarioService, public _estacionService: EstacionService) {
     this.usuario = this._usuarioService.usuario;
-    this.estaciones = this._usuarioService.usuario.estaciones;
+    for ( let id of this._usuarioService.usuario.estaciones){
+      this._estacionService.getEstacion(String(id)).
+      subscribe( (resp:Estacion) => {
+        console.log(resp.estacion);
+        this.estaciones.push(resp.estacion);
+    });
+    }
+    
    }
 
   ngOnInit() {
@@ -31,5 +38,8 @@ export class ProfileComponent implements OnInit {
     this._usuarioService.actualizarUsuario(this.usuario)
         .subscribe();
   }
+
+  
+
 
 }

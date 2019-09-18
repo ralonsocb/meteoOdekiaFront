@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Marcador } from './marcador.class';
+import { Estacion } from 'src/app/models/estacion.model';
+import { UsuarioService } from '../../services/usuario/usuario.service';
+import { EstacionService } from '../../services/estacion/estacion.service';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-maps',
@@ -11,20 +15,24 @@ export class MapsComponent implements OnInit {
   lat = 39.4697500;
   lon = -0.3773900;
   marcadores: Marcador[] = [];
+  usuario: Usuario;
 
 
-  constructor() {
+  constructor( public _usuarioService: UsuarioService, public _estacionService: EstacionService) {
 
-    const m1 = new Marcador (39.6697500, -0.3773900 );
-    m1.titulo = 'Estación1';
-    m1.descripcion = 'Estación1';
-    this.marcadores.push( m1);
+    this.usuario = this._usuarioService.usuario;
 
-    const m2 = new Marcador (39.7697500, -0.7773900 );
-    m2.titulo = 'Estación2';
-    m2.descripcion = 'Estación2';
-    this.marcadores.push( m2);
-   }
+    for(let estacion of this.usuario.estaciones){
+      let id = String(estacion);
+      this._estacionService.getEstacion(id).
+      subscribe( (resp:Estacion) => {
+        let marcador = new Marcador(resp.estacion.latitud, resp.estacion.longitud);
+        marcador.titulo = resp.estacion.nombre;
+        this.marcadores.push(marcador);
+      });
+    }
+
+  }
 
 
   ngOnInit() {

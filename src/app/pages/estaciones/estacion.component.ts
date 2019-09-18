@@ -17,7 +17,7 @@ export class EstacionComponent implements OnInit {
   usuarios: Usuario[] = [];
   usuario: Usuario;
   usuariosEstacion: Usuario[] = [];
-  estacion: Estacion = new Estacion('','');
+  estacion: Estacion = new Estacion('',null,null);
 
   desde: number = 0;
 

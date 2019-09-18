@@ -20,7 +20,6 @@ export class SidebarComponent implements OnInit {
                public _estacionService: EstacionService) {
 
                 this.usuario = this._usuarioService.usuario;
-                console.log(this.usuario.estaciones);
 
                 for(let estacion of this.usuario.estaciones){
                   let id = String(estacion);
