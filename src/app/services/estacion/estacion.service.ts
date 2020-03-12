@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
 import { map } from 'rxjs/operators';
 
-import swal from 'sweetalert';
+import sweetalert from 'sweetalert';
 import { UsuarioService } from '../usuario/usuario.service';
 import { Estacion } from 'src/app/models/estacion.model';
 
@@ -55,14 +55,14 @@ crearEstacion(estacion:Estacion) {
 
     return this.http.put(url, estacion)
       .pipe(map( (resp:any) =>{
-        swal('Estación actualizada',estacion.nombre, 'success');
+        sweetAlert('Estación actualizada',estacion.nombre, 'success');
         return resp.estacion;
       }));
   }else{
     url += '?token='+ this._usuarioService.token;
     return this.http.post(url, estacion)
       .pipe(map( (resp:any) => {
-        swal('Estación creada',estacion.nombre, 'success');
+        sweetAlert('Estación creada',estacion.nombre, 'success');
         return resp.estacion;
       }));
   }
@@ -77,7 +77,7 @@ eliminarEstacion ( id: string) {
 
   return this.http.delete(url)
               .pipe(map( resp => {
-                swal('Estación eliminada', ' La estación ha sido eliminada correctamente', 'success');
+                sweetAlert('Estación eliminada', ' La estación ha sido eliminada correctamente', 'success');
                 return true;
               }));
 }

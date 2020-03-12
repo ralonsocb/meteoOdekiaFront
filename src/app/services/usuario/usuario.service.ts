@@ -3,7 +3,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from 'src/app/config/config';
 import {map, catchError} from 'rxjs/operators';
-import swal from 'sweetalert';
+import sweetalert from 'sweetalert';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 
@@ -76,7 +76,7 @@ export class UsuarioService {
                   return true;
                 })
                 , catchError ( err =>{
-                  swal ('Error al acceder', err.error.mensaje,'error');
+                  sweetAlert ('Error al acceder', err.error.mensaje,'error');
                   return throwError (err);
                 }));
 
@@ -90,7 +90,7 @@ export class UsuarioService {
     return this.http.post( url, usuario )
               .pipe(map( (resp: any) => {
 
-                swal('Usuario creado', usuario.email, 'success' );
+                sweetAlert('Usuario creado', usuario.email, 'success' );
                 return resp.usuario;
               }));
   }
@@ -114,7 +114,7 @@ export class UsuarioService {
           }
 
 
-          swal('Usuario actualizado', usuario.nombre, 'success');
+          sweetAlert('Usuario actualizado', usuario.nombre, 'success');
 
           return true;
         }));
@@ -141,7 +141,7 @@ export class UsuarioService {
 
     return this.http.delete(url)
                 .pipe(map( resp => {
-                  swal('Usuario eliminado', ' El usuario ha sido eliminado correctamente', 'success');
+                  sweetAlert('Usuario eliminado', ' El usuario ha sido eliminado correctamente', 'success');
                   return true;
                 }));
   }

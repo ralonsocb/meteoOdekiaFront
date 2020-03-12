@@ -19,9 +19,9 @@ import { AdminGuard } from '../services/guards/admin.guard';
 
 const pagesRoutes: Routes = [
    
-            {path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' }},
+            {path: 'dashboard', component: DashboardComponent, data: { titulo: 'Datos estaciones meteorológicas' }},
             {path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' }},
-            {path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' }},
+            {path: 'graficas1', component: Graficas1Component, data: { titulo: 'Datos de la estación' }},
             {path: 'map', component: MapsComponent, data: { titulo: 'Mapa' }},
             {path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes' }},
             {path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }},

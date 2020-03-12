@@ -1,1 +1,63 @@
-<p>Página principal del usuario</p>
+<div vlass="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere, por favor</span> </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                    <div id="myTable_filter" class="dataTables_filter"><small>Buscar:<input #input (keyup)="buscarUsuario( input.value)" type="search" class="" placeholder="" aria-controls="myTable"></small></div>
+            
+
+                <table class=" table table-hover">
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Temperatura ambiental</th>
+                        <th>Humedad relativa</th>
+                        <th>Presión atmosférica</th>
+                        <th>Vel.Viento</th>
+                        <th>Dir.Viento</th>
+                        <th>Precipitación</th>
+                        <th>Índice UV</th>
+                        <th>Posición sol</th>
+                        <th>Brillo/crepúsculo</th>
+                        <th>Radiación solar</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let estacion of estaciones">
+                            <td>{{ estacion.nombre }}</td>
+                            <td>{{ estacion.temperatura }} ºC</td>
+                            <td>{{estacion.humedad}} %</td>
+                            <td>{{estacion.presion}} hPa</td>
+                            <td>{{estacion.velViento}} km/h</td>
+                            <td>{{estacion.dirViento}}</td>
+                            <td>{{estacion.precipitaciones}} mm</td>
+                            <td>{{estacion.uv}}</td>
+                            <td>{{estacion.posSol}} º</td>
+                            <td>{{estacion.brillo}}</td>
+                            <td>{{estacion.radiacion}} kWh/m2</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+                    Anteriores
+                </button>
+
+                <button (click)="cambiarDesde(10)" class="btn btn-secondary">
+                    Siguientes
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

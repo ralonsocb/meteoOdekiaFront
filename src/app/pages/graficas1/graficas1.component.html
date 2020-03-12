@@ -1,29 +1,67 @@
-<div class="row">
 
-
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <div style="display: block">
-                    <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType">
-                            </canvas>
-                </div>
-            </div>
-        </div>
+<div vlass="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere, por favor</span> </div>
     </div>
-    <div class="col-6">
-        <div class="card">
-            <div class="card-body">
-                <div style="display: block">
-                    <canvas baseChart [data]="polarAreaChartData" [labels]="polarAreaChartLabels" [legend]="polarAreaLegend" [chartType]="polarAreaChartType">
-                </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 
-
+<div class="row animated fadeIn" *ngIf="!cargando">
     <div class="col-12">
+        <div class="card">
+            <div class="card-body">            
+                <table class=" table table-hover">
+                    <thead>
+                        <th>Día</th>
+                        <th>Temperatura ambiental</th>
+                        <th>Humedad relativa</th>
+                        <th>Presión atmosférica</th>
+                        <th>Vel.Viento</th>
+                        <th>Dir.Viento</th>
+                        <th>Precipitación</th>
+                        <th>Índice UV</th>
+                        <th>Posición sol</th>
+                        <th>Brillo/crepúsculo</th>
+                        <th>Radiación solar</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let estacion of estaciones">
+                            <td>{{ estacion.nombre }}</td>
+                            <td>{{ estacion.temperatura }} ºC</td>
+                            <td>{{estacion.humedad}} %</td>
+                            <td>{{estacion.presion}} hPa</td>
+                            <td>{{estacion.velViento}} km/h</td>
+                            <td>{{estacion.dirViento}}</td>
+                            <td>{{estacion.precipitaciones}} mm</td>
+                            <td>{{estacion.uv}}</td>
+                            <td>{{estacion.posSol}} º</td>
+                            <td>{{estacion.brillo}}</td>
+                            <td>{{estacion.radiacion}} kWh/m2</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button (click)="cambiarDesde(-10)" class="btn btn-secondary">
+                    Anteriores
+                </button>
+
+                <button (click)="cambiarDesde(10)" class="btn btn-secondary">
+                    Siguientes
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+ <div class="row">
+
+    <div class="col-6">
         <div class="card">
             <div class="card-body">
                 <div class="flex">
@@ -34,9 +72,24 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex">
+                        <div class="flex-item">
+                            <div style="display: block;">
+                                <canvas baseChart height="100" [datasets]="lineChartData2" [labels]="lineChartLabels2" [options]="lineChartOptions2" [colors]="lineChartColors2" [legend]="lineChartLegend2" [chartType]="lineChartType2" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+
+
+ 
+    </div> 

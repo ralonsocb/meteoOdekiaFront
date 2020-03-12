@@ -14,6 +14,9 @@ export class Estacion {
           public dirViento?: number,
           public brillo?: number,
           public uv?: number,
+          public presion?: number,
+          public posSol?: number,
+          public radiacion?: number,
       ) {
   
       }

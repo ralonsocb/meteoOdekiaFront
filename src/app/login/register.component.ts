@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import swal from 'sweetalert';
+import sweetalert from 'sweetalert';
 import { UsuarioService } from '../services/usuario/usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { Router } from '@angular/router';
@@ -48,12 +48,12 @@ export class RegisterComponent implements OnInit {
 
     if (!this.forma.value.condiciones) {
   
-      swal('Importante','Debe aceptar las condiciones', 'warning');
+      sweetAlert('Importante','Debe aceptar las condiciones', 'warning');
       return;
     }
 
     if (this.forma.value.password !== this.forma.value.password2) {
-      swal('Importante', 'Las contraseñas no coinciden', 'warning');
+      sweetAlert('Importante', 'Las contraseñas no coinciden', 'warning');
       return;
     }
     let usuario = new Usuario(
